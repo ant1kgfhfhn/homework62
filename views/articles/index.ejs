@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articles</title>
+  <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Articles</h1>
+    <p>Explore our articles.</p>
+
+    <ul class="article-list">
+      <% articles.forEach((article) => { %>
+        <li class="article-card">
+          <a href="/articles/<%= article.id %>">
+            <%= article.title %>
+          </a>
+          <p>Article ID: <%= article.id %></p>
+        </li>
+      <% }); %>
+    </ul>
+
+    <a class="home-link" href="/">Back to home</a>
+  </main>
+</body>
+</html>

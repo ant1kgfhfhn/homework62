@@ -1,0 +1,20 @@
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Users
+    link(rel="stylesheet", href="/styles/styles.css")
+  body
+    main.container
+      h1 Users
+      p Here is the list of users.
+
+      ul.user-list
+        each user in users
+          li.user-card
+            a(href="/users/" + user.id)= user.username
+            span User ID: #{user.id}
+
+      a.home-link(href="/") Back to home

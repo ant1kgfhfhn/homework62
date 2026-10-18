@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= article.title %></title>
+    <link rel="stylesheet" href="/styles/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <article class="article-detail">
+        <p class="label">Article #<%= article.id %></p>
+        <h1><%= article.title %></h1>
+        <p><%= article.content %></p>
+      </article>
+
+      <a class="home-link" href="/articles">Back to articles</a>
+    </main>
+  </body>
+</html>
