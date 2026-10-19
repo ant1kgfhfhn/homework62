@@ -1,5 +1,5 @@
-const ejs = require("ejs");
 const path = require("path");
+const ejs = require("ejs");
 
 const articles = [
   {
@@ -16,26 +16,33 @@ const articles = [
     id: 3,
     title: "MVC Architecture",
     content:
-      "MVC separates application logic into models, views, and controllers.",
+      "MVC separates application logic into models, views and controllers.",
   },
 ];
 
 function renderEjs(res, template, data) {
-  const templatePath = path.join(
-    __dirname,
-    "..",
+  const templatePath = path.resolve(
+    process.cwd(),
     "views",
     "articles",
     template,
   );
 
-  ejs.renderFile(templatePath, data, (error, html) => {
-    if (error) {
-      return res.status(500).send("Failed to render article page.");
-    }
+  ejs.renderFile(
+    templatePath,
+    {
+      ...data,
+      theme: res.locals.theme || "light",
+    },
+    (error, html) => {
+      if (error) {
+        console.error("EJS rendering error:", error);
+        return res.status(500).send("Failed to render article page.");
+      }
 
-    res.send(html);
-  });
+      res.send(html);
+    },
+  );
 }
 
 function getArticles(req, res) {
