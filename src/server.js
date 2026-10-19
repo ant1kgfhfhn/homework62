@@ -10,14 +10,18 @@ const articlesRoutes = require("./routes/articlesRoutes");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const rootPath = path.join(__dirname, "..");
+const viewsPath = path.join(rootPath, "views");
+
 app.set("view engine", "pug");
-app.set("views", path.join(__dirname, "views"));
+app.set("views", viewsPath);
 
 app.use(logRequest);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/styles", express.static(path.join(__dirname, "views")));
+app.use("/styles", express.static(viewsPath));
 
 app.get("/", (req, res) => {
   res.send("Express server is running!");
